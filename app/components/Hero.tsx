@@ -30,8 +30,8 @@ function PhoneMockup() {
         style={{
           width: 280,
           height: 580,
-          background: "#0A1A1A",
-          border: "2px solid rgba(255,255,255,0.12)",
+          background: "#F5F5F5",
+          border: "2px solid rgba(0,0,0,0.08)",
           boxShadow:
             "0 40px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)",
         }}
@@ -39,112 +39,101 @@ function PhoneMockup() {
         {/* Notch */}
         <div
           className="absolute top-3 left-1/2 -translate-x-1/2 rounded-full z-10"
-          style={{ width: 100, height: 28, background: "#0A1A1A" }}
+          style={{ width: 100, height: 28, background: "#000000" }}
         />
 
         {/* App UI simulation */}
         <div className="absolute inset-0 flex flex-col" style={{ paddingTop: 44 }}>
           {/* Header */}
-          <div
-            className="px-5 py-3 flex items-center justify-between"
-            style={{ background: "linear-gradient(180deg, #006B6B 0%, #005252 100%)" }}
-          >
-            <div>
-              <div className="text-xs text-white/60">Welcome back</div>
-              <div className="text-sm font-semibold text-white">Ahmed 👋</div>
-            </div>
-            <div className="relative">
-              <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-sm">
-                🔔
+          <div className="px-5 py-4">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="text-xs text-gray-400" style={{ fontFamily: "serif" }}>السلام عليكم</div>
+                <div className="text-lg font-bold text-gray-900 mt-0.5">Akhtar Ali Brohi</div>
+                <div className="flex items-center gap-1 mt-1">
+                  <span className="text-[10px] text-gray-400">📅</span>
+                  <span className="text-[10px] text-gray-400">10 Ramadan 1447 AH</span>
+                </div>
               </div>
-              <div
-                className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold text-white"
-                style={{ background: "#C9A55A" }}
-              >
-                3
+              <div className="relative">
+                <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center shadow-sm">
+                  <span className="text-gray-600">🔔</span>
+                </div>
+                <div
+                  className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
+                  style={{ background: "#EF4444" }}
+                />
               </div>
             </div>
           </div>
 
-          {/* Stats row */}
+          {/* Stats card */}
           <div
-            className="mx-4 mt-3 rounded-2xl p-3 grid grid-cols-3 gap-2"
-            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+            className="mx-4 mt-2 rounded-3xl p-4 grid grid-cols-3 gap-2 shadow-sm"
+            style={{ background: "white" }}
           >
             {[
-              { label: "Prayers", value: "847" },
-              { label: "Helped", value: "124" },
-              { label: "Streak", value: "12🔥" },
+              { icon: "🤲", label: "Prayers\nOffered", value: "808", color: "#14B8A6" },
+              { icon: "💚", label: "People\nHelped", value: "1", color: "#10B981" },
+              { icon: "🏆", label: "Rewards\nEarned", value: "7795.4B", color: "#A78BFA" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <div className="text-base font-bold text-white">{s.value}</div>
-                <div className="text-[9px] text-white/50">{s.label}</div>
+                <div className="w-10 h-10 rounded-2xl mx-auto mb-1 flex items-center justify-center" style={{ background: `${s.color}15` }}>
+                  <span className="text-base">{s.icon}</span>
+                </div>
+                <div className="text-lg font-bold" style={{ color: s.color }}>{s.value}</div>
+                <div className="text-[8px] text-gray-400 leading-tight whitespace-pre-line">{s.label}</div>
               </div>
             ))}
           </div>
 
-          {/* Prayer cards */}
-          <div className="flex-1 overflow-hidden px-4 mt-3 space-y-2">
+          {/* Action cards grid */}
+          <div className="flex-1 overflow-hidden px-4 mt-4 grid grid-cols-2 gap-2">
             {[
-              { name: "Ahmad Al-Rashidi", type: "Al-Fatiha", count: 87, goal: 100, color: "#006B6B" },
-              { name: "Fatima Hassan", type: "Yaseen", count: 43, goal: 100, color: "#7B68A6" },
+              { title: "Create\nRequest", icon: "✏️", color: "linear-gradient(135deg, #14B8A6, #0D9488)" },
+              { title: "Family\nCircle", icon: "👨‍👩‍👧", color: "linear-gradient(135deg, #F59E0B, #D97706)" },
+              { title: "Invite\nFriends", icon: "✉️", color: "linear-gradient(135deg, #A78BFA, #8B5CF6)" },
+              { title: "Community\nPrayers", icon: "❤️", color: "linear-gradient(135deg, #EC4899, #DB2777)" },
             ].map((card) => (
               <div
-                key={card.name}
-                className="rounded-xl p-3"
+                key={card.title}
+                className="rounded-2xl p-3 flex flex-col justify-between shadow-sm"
                 style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: card.color,
+                  minHeight: "80px",
                 }}
               >
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <div className="text-xs font-semibold text-white leading-tight">{card.name}</div>
-                    <div
-                      className="text-[9px] mt-0.5 px-1.5 py-0.5 rounded-full inline-block"
-                      style={{ background: `${card.color}30`, color: card.color }}
-                    >
-                      {card.type}
-                    </div>
-                  </div>
-                  <div className="text-xs text-white/50">{card.count}/{card.goal}</div>
+                <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: "rgba(255,255,255,0.2)" }}>
+                  <span className="text-base">{card.icon}</span>
                 </div>
-                <div className="w-full rounded-full h-1.5" style={{ background: "rgba(255,255,255,0.1)" }}>
-                  <div
-                    className="h-1.5 rounded-full"
-                    style={{ width: `${(card.count / card.goal) * 100}%`, background: card.color }}
-                  />
-                </div>
-                <div
-                  className="mt-2 w-full py-1.5 rounded-lg text-[10px] font-semibold text-center"
-                  style={{ background: card.color, color: "white" }}
-                >
-                  Pray Now 🤲
+                <div className="text-xs font-bold text-white leading-tight whitespace-pre-line mt-2">
+                  {card.title}
                 </div>
               </div>
             ))}
           </div>
 
           {/* Bottom nav */}
-          <div
-            className="mx-3 mb-4 rounded-2xl flex justify-around py-3"
-            style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
-          >
-            {["🏠", "📋", "🤲", "👨‍👩‍👧", "👤"].map((icon, i) => (
-              <div
-                key={i}
-                className={`text-base px-2 py-1 rounded-xl ${i === 2 ? "scale-125" : ""}`}
-                style={
-                  i === 0
-                    ? { background: "rgba(0,107,107,0.3)" }
-                    : i === 2
-                    ? { background: "linear-gradient(135deg, #C9A55A, #F9C252)" }
-                    : {}
-                }
-              >
-                {icon}
-              </div>
-            ))}
+          <div className="px-4 pb-3 pt-2 flex justify-around items-center">
+            <div className="w-8 h-8 flex items-center justify-center">
+              <span className="text-lg" style={{ color: "#14B8A6" }}>🏠</span>
+              <div className="absolute bottom-2 w-1 h-1 rounded-full" style={{ background: "#14B8A6" }} />
+            </div>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <span className="text-lg text-gray-400">📋</span>
+            </div>
+            <div
+              className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg -mt-6"
+              style={{ background: "linear-gradient(135deg, #14B8A6, #0D9488)" }}
+            >
+              <span className="text-xl">🌿</span>
+            </div>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <span className="text-lg text-gray-400">👨‍👩‍👧</span>
+            </div>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <span className="text-lg text-gray-400">👤</span>
+            </div>
           </div>
         </div>
       </div>
