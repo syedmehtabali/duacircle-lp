@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const stats = [
   { value: "124,847+", label: "Total Prayers Made", icon: "🤲", color: "#006B6B" },
