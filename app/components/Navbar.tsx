@@ -77,6 +77,19 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <motion.a
+              href="/login"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "white",
+              }}
+            >
+              Sign In
+            </motion.a>
+            <motion.a
               href="#download"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
@@ -128,9 +141,21 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#download"
+                href="/login"
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 py-3 rounded-xl text-center text-sm font-semibold"
+                style={{
+                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  color: "white",
+                }}
+              >
+                Sign In
+              </a>
+              <a
+                href="#download"
+                onClick={() => setMobileOpen(false)}
+                className="py-3 rounded-xl text-center text-sm font-semibold"
                 style={{
                   background: "linear-gradient(135deg, #C9A55A, #F9C252)",
                   color: "#2C2C2C",
